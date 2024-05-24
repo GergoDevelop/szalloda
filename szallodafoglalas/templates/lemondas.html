@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foglalás Lemondása</title>
+</head>
+<body>
+    <h1>Foglalás Lemondása</h1>
+    <form action="/lemondas" method="post">
+        <label for="szobaszam">Szoba szám:</label>
+        <input type="number" id="szobaszam" name="szobaszam" required><br><br>
+        <label for="datum_tol">Dátum tól (ÉÉÉÉ-HH-NN):</label>
+        <input type="date" id="datum_tol" name="datum_tol" required><br><br>
+        <input type="submit" value="Lemondás">
+    </form>
+    <br>
+    <a href="/">Vissza a főmenübe</a>
+</body>
+</html>
