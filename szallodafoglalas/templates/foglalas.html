@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Foglalás</title>
+</head>
+<body>
+    <h1>Foglalás</h1>
+    <form method="post" action="/foglalas">
+        <label for="szobaszam">Szobaszám:</label>
+        <select name="szobaszam" id="szobaszam">
+            {% for szoba in szobak %}
+                <option value="{{ szoba.szobaszam }}">{{ szoba.szobaszam }}</option>
+            {% endfor %}
+        </select><br>
+        <label for="datum_tol">Kezdő dátum (ÉÉÉÉ-HH-NN):</label>
+        <input type="text" name="datum_tol" id="datum_tol"><br>
+        <label for="datum_ig">Befejező dátum (ÉÉÉÉ-HH-NN):</label>
+        <input type="text" name="datum_ig" id="datum_ig"><br>
+        <input type="submit" value="Foglalás">
+    </form>
+</body>
+</html>
