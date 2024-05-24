@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect
 from datetime import datetime
 
 app = Flask(__name__)
@@ -72,12 +72,14 @@ def foglalas():
             return redirect('/')
     return render_template('foglalas.html', szobak=szalloda.szobak)
 
-@app.route('/lemondas', methods=['POST'])
+@app.route('/lemondas', methods=['GET', 'POST'])
 def lemondas():
-    szobaszam = int(request.form['szobaszam'])
-    datum_tol = datetime.strptime(request.form['datum_tol'], '%Y-%m-%d')
-    szalloda.lemondas(szobaszam, datum_tol)
-    return redirect('/')
+    if request.method == 'POST':
+        szobaszam = int(request.form['szobaszam'])
+        datum_tol = datetime.strptime(request.form['datum_tol'], '%Y-%m-%d')
+        szalloda.lemondas(szobaszam, datum_tol)
+        return redirect('/')
+    return render_template('lemondas.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
